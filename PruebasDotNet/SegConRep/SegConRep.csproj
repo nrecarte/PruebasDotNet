@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -60,6 +64,9 @@
       <Private>True</Private>
       <HintPath>..\packages\MySql.Web.6.8.3\lib\net45\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -79,6 +86,9 @@
     <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -103,6 +113,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -115,6 +128,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\segcon\menubar.css" />
+    <Content Include="Content\segcon\segcon.css" />
+    <Content Include="Content\segcon\test.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -126,6 +142,359 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SakilaEDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\-Salvar16x16.png" />
+    <Content Include="Images\-Salvar24x24.png" />
+    <Content Include="Images\-Salvar32x32.png" />
+    <Content Include="Images\45.png" />
+    <Content Include="Images\Activar24.png" />
+    <Content Include="Images\Activo16.png" />
+    <Content Include="Images\Activo24.png" />
+    <Content Include="Images\Activo32.png" />
+    <Content Include="Images\ActivoAzul16.png" />
+    <Content Include="Images\ActivoAzul24.png" />
+    <Content Include="Images\ActivoAzul32.png" />
+    <Content Include="Images\Actualizar16x16.png" />
+    <Content Include="Images\Actualizar24x24.png" />
+    <Content Include="Images\Actualizar32x32.png" />
+    <Content Include="Images\Adelante48x48.png" />
+    <Content Include="Images\Agregar16x16.png" />
+    <Content Include="Images\Agregar24x24.png" />
+    <Content Include="Images\Agregar32x32.png" />
+    <Content Include="Images\AprendeDeFinanzas.png" />
+    <Content Include="Images\Ayuda16x16.png" />
+    <Content Include="Images\Ayuda24x24.png" />
+    <Content Include="Images\Ayuda32x32.png" />
+    <Content Include="Images\back.png" />
+    <Content Include="Images\background.png" />
+    <Content Include="Images\bajar.png" />
+    <Content Include="Images\bancon.png" />
+    <Content Include="Images\Bottom_texture-.jpg" />
+    <Content Include="Images\Bottom_texture.jpg" />
+    <Content Include="Images\Caido16x16.png" />
+    <Content Include="Images\Caido24x24.png" />
+    <Content Include="Images\Caido32x32.png" />
+    <Content Include="Images\calculator.png" />
+    <Content Include="Images\Cancelar16x16.png" />
+    <Content Include="Images\Cancelar24x24.png" />
+    <Content Include="Images\Cancelar32x32.png" />
+    <Content Include="Images\car-icon128x128.png" />
+    <Content Include="Images\Casa16x16.png" />
+    <Content Include="Images\Casa24x24.png" />
+    <Content Include="Images\Casa32x32.png" />
+    <Content Include="Images\CBNS.png" />
+    <Content Include="Images\Cheque16x16.png" />
+    <Content Include="Images\Cheque24x24.png" />
+    <Content Include="Images\Cheque32x32.png" />
+    <Content Include="Images\ComentariosYSugerencias.png" />
+    <Content Include="Images\connect_no.png" />
+    <Content Include="Images\Copiar16x16.png" />
+    <Content Include="Images\Copiar24x24.png" />
+    <Content Include="Images\Copiar32x32.png" />
+    <Content Include="Images\Desactivar24.png" />
+    <Content Include="Images\doctor128x128.png" />
+    <Content Include="Images\Ejecutar16x16.png" />
+    <Content Include="Images\Ejecutar24x24.png" />
+    <Content Include="Images\Ejecutar32x32.png" />
+    <Content Include="Images\Ejecutivos.png" />
+    <Content Include="Images\enConstruccion.png" />
+    <Content Include="Images\EncuestaYComentario.png" />
+    <Content Include="Images\EstadosFinancierosLogo.png" />
+    <Content Include="Images\Fabrica16x16.png" />
+    <Content Include="Images\Fabrica24x24.png" />
+    <Content Include="Images\Fabrica32x32.png" />
+    <Content Include="Images\gc_tiempo.png" />
+    <Content Include="Images\gearazul16.png" />
+    <Content Include="Images\geargris16.png" />
+    <Content Include="Images\godaddy-ssl-logo.png" />
+    <Content Include="Images\GrupoContinentalH.png" />
+    <Content Include="Images\hbanking.png" />
+    <Content Include="Images\help-32x32.png" />
+    <Content Include="Images\help.png" />
+    <Content Include="Images\home.png" />
+    <Content Include="Images\HomeImage_SeguroAuto.png" />
+    <Content Include="Images\Hospital-icon.png" />
+    <Content Include="Images\Hospital-icon100x100.png" />
+    <Content Include="Images\house.png" />
+    <Content Include="Images\Icons\add.png" />
+    <Content Include="Images\Icons\address_book.png" />
+    <Content Include="Images\Icons\add_comment.png" />
+    <Content Include="Images\Icons\add_mail.png" />
+    <Content Include="Images\Icons\add_notes.png" />
+    <Content Include="Images\Icons\add_page.png" />
+    <Content Include="Images\Icons\add_to_favorite.png" />
+    <Content Include="Images\Icons\add_user.png" />
+    <Content Include="Images\Icons\airplane.png" />
+    <Content Include="Images\Icons\apple.png" />
+    <Content Include="Images\Icons\approve_comment.png" />
+    <Content Include="Images\Icons\approve_mail.png" />
+    <Content Include="Images\Icons\approve_notes.png" />
+    <Content Include="Images\Icons\approve_page.png" />
+    <Content Include="Images\Icons\approve_user.png" />
+    <Content Include="Images\Icons\attachment.png" />
+    <Content Include="Images\Icons\attach_document.png" />
+    <Content Include="Images\Icons\back.png" />
+    <Content Include="Images\Icons\barcode.png" />
+    <Content Include="Images\Icons\baseball.png" />
+    <Content Include="Images\Icons\basketball.png" />
+    <Content Include="Images\Icons\battery.png" />
+    <Content Include="Images\Icons\battery_charge.png" />
+    <Content Include="Images\Icons\battery_full.png" />
+    <Content Include="Images\Icons\battery_low.png" />
+    <Content Include="Images\Icons\block.png" />
+    <Content Include="Images\Icons\bluetooth.png" />
+    <Content Include="Images\Icons\briefcase.png" />
+    <Content Include="Images\Icons\business_user.png" />
+    <Content Include="Images\Icons\calculator.png" />
+    <Content Include="Images\Icons\calendar.png" />
+    <Content Include="Images\Icons\camcorder.png" />
+    <Content Include="Images\Icons\card_game_icon.png" />
+    <Content Include="Images\Icons\chalk_board.png" />
+    <Content Include="Images\Icons\chart.png" />
+    <Content Include="Images\Icons\chart_pie.png" />
+    <Content Include="Images\Icons\checked.png" />
+    <Content Include="Images\Icons\check_mark.png" />
+    <Content Include="Images\Icons\clock.png" />
+    <Content Include="Images\Icons\cloud.png" />
+    <Content Include="Images\Icons\clouds.png" />
+    <Content Include="Images\Icons\cloud_comment.png" />
+    <Content Include="Images\Icons\cloud_download.png" />
+    <Content Include="Images\Icons\cloud_upload.png" />
+    <Content Include="Images\Icons\comment.png" />
+    <Content Include="Images\Icons\comments.png" />
+    <Content Include="Images\Icons\credit_card.png" />
+    <Content Include="Images\Icons\cut.png" />
+    <Content Include="Images\Icons\database.png" />
+    <Content Include="Images\Icons\delete.png" />
+    <Content Include="Images\Icons\delete_comment.png" />
+    <Content Include="Images\Icons\delete_mail.png" />
+    <Content Include="Images\Icons\delete_notes.png" />
+    <Content Include="Images\Icons\delete_page.png" />
+    <Content Include="Images\Icons\delete_user.png" />
+    <Content Include="Images\Icons\directions.png" />
+    <Content Include="Images\Icons\dislike.png" />
+    <Content Include="Images\Icons\dollar_currency_sign.png" />
+    <Content Include="Images\Icons\download.png" />
+    <Content Include="Images\Icons\download_page.png" />
+    <Content Include="Images\Icons\edit_mail.png" />
+    <Content Include="Images\Icons\edit_notes.png" />
+    <Content Include="Images\Icons\edit_page.png" />
+    <Content Include="Images\Icons\edit_user.png" />
+    <Content Include="Images\Icons\euro_currency_sign.png" />
+    <Content Include="Images\Icons\exclamination_mark.png" />
+    <Content Include="Images\Icons\favorite.png" />
+    <Content Include="Images\Icons\favourite_place.png" />
+    <Content Include="Images\Icons\favourite_video.png" />
+    <Content Include="Images\Icons\filter.png" />
+    <Content Include="Images\Icons\first_aid.png" />
+    <Content Include="Images\Icons\flag.png" />
+    <Content Include="Images\Icons\folder.png" />
+    <Content Include="Images\Icons\football.png" />
+    <Content Include="Images\Icons\games.png" />
+    <Content Include="Images\Icons\gears.png" />
+    <Content Include="Images\Icons\handicap.png" />
+    <Content Include="Images\Icons\headphones.png" />
+    <Content Include="Images\Icons\history.png" />
+    <Content Include="Images\Icons\home.png" />
+    <Content Include="Images\Icons\hospital.png" />
+    <Content Include="Images\Icons\id_card.png" />
+    <Content Include="Images\Icons\image.png" />
+    <Content Include="Images\Icons\info.png" />
+    <Content Include="Images\Icons\key.png" />
+    <Content Include="Images\Icons\laboratory.png" />
+    <Content Include="Images\Icons\levels.png" />
+    <Content Include="Images\Icons\lightbulb.png" />
+    <Content Include="Images\Icons\like.png" />
+    <Content Include="Images\Icons\link.png" />
+    <Content Include="Images\Icons\lock.png" />
+    <Content Include="Images\Icons\magic_wand.png" />
+    <Content Include="Images\Icons\magnet.png" />
+    <Content Include="Images\Icons\mail.png" />
+    <Content Include="Images\Icons\map_pin.png" />
+    <Content Include="Images\Icons\megaphone.png" />
+    <Content Include="Images\Icons\microphone.png" />
+    <Content Include="Images\Icons\monitor.png" />
+    <Content Include="Images\Icons\mouse.png" />
+    <Content Include="Images\Icons\mp3_player.png" />
+    <Content Include="Images\Icons\music_note.png" />
+    <Content Include="Images\Icons\network.png" />
+    <Content Include="Images\Icons\new.png" />
+    <Content Include="Images\Icons\newsletter.png" />
+    <Content Include="Images\Icons\next.png" />
+    <Content Include="Images\Icons\notes.png" />
+    <Content Include="Images\Icons\notes_warning.png" />
+    <Content Include="Images\Icons\notification.png" />
+    <Content Include="Images\Icons\not_available.png" />
+    <Content Include="Images\Icons\package.png" />
+    <Content Include="Images\Icons\page.png" />
+    <Content Include="Images\Icons\page_full.png" />
+    <Content Include="Images\Icons\page_settings.png" />
+    <Content Include="Images\Icons\page_warning.png" />
+    <Content Include="Images\Icons\paint_brush.png" />
+    <Content Include="Images\Icons\palette.png" />
+    <Content Include="Images\Icons\pencil.png" />
+    <Content Include="Images\Icons\phone.png" />
+    <Content Include="Images\Icons\phone2.png" />
+    <Content Include="Images\Icons\phone_book.png" />
+    <Content Include="Images\Icons\photo_camera.png" />
+    <Content Include="Images\Icons\ping_pong.png" />
+    <Content Include="Images\Icons\printer.png" />
+    <Content Include="Images\Icons\prize_winner.png" />
+    <Content Include="Images\Icons\progress.png" />
+    <Content Include="Images\Icons\promotion.png" />
+    <Content Include="Images\Icons\protection.png" />
+    <Content Include="Images\Icons\question_mark.png" />
+    <Content Include="Images\Icons\quote.png" />
+    <Content Include="Images\Icons\radio.png" />
+    <Content Include="Images\Icons\rain.png" />
+    <Content Include="Images\Icons\rain_thunders.png" />
+    <Content Include="Images\Icons\refresh.png" />
+    <Content Include="Images\Icons\refresh_page.png" />
+    <Content Include="Images\Icons\reply_mail.png" />
+    <Content Include="Images\Icons\route.png" />
+    <Content Include="Images\Icons\rss.png" />
+    <Content Include="Images\Icons\rugby_ball.png" />
+    <Content Include="Images\Icons\sale.png" />
+    <Content Include="Images\Icons\save.png" />
+    <Content Include="Images\Icons\search.png" />
+    <Content Include="Images\Icons\security.png" />
+    <Content Include="Images\Icons\security_warning.png" />
+    <Content Include="Images\Icons\send_mail.png" />
+    <Content Include="Images\Icons\settings.png" />
+    <Content Include="Images\Icons\shopping_cart.png" />
+    <Content Include="Images\Icons\smart_phone.png" />
+    <Content Include="Images\Icons\snooker_ball.png" />
+    <Content Include="Images\Icons\snow.png" />
+    <Content Include="Images\Icons\speedometer.png" />
+    <Content Include="Images\Icons\star.png" />
+    <Content Include="Images\Icons\sterling_pound_currency_sign.png" />
+    <Content Include="Images\Icons\sun.png" />
+    <Content Include="Images\Icons\sun_clouds.png" />
+    <Content Include="Images\Icons\sun_clouds_rain.png" />
+    <Content Include="Images\Icons\sun_clouds_thunder.png" />
+    <Content Include="Images\Icons\support.png" />
+    <Content Include="Images\Icons\tag.png" />
+    <Content Include="Images\Icons\target.png" />
+    <Content Include="Images\Icons\television.png" />
+    <Content Include="Images\Icons\tennis_ball.png" />
+    <Content Include="Images\Icons\text_page.png" />
+    <Content Include="Images\Icons\thunders.png" />
+    <Content Include="Images\Icons\tools.png" />
+    <Content Include="Images\Icons\truck.png" />
+    <Content Include="Images\Icons\unlock.png" />
+    <Content Include="Images\Icons\upload.png" />
+    <Content Include="Images\Icons\upload_page.png" />
+    <Content Include="Images\Icons\user.png" />
+    <Content Include="Images\Icons\users.png" />
+    <Content Include="Images\Icons\user_comment.png" />
+    <Content Include="Images\Icons\video.png" />
+    <Content Include="Images\Icons\video_player.png" />
+    <Content Include="Images\Icons\warning.png" />
+    <Content Include="Images\Icons\waste.png" />
+    <Content Include="Images\Icons\wireless.png" />
+    <Content Include="Images\Icons\world.png" />
+    <Content Include="Images\Icons\yen_currency_sign.png" />
+    <Content Include="Images\Icons\zoom_in.png" />
+    <Content Include="Images\Icons\zoom_out.png" />
+    <Content Include="Images\icon_check.png" />
+    <Content Include="Images\Inactivo24.png" />
+    <Content Include="Images\key.png" />
+    <Content Include="Images\Logo2013.png" />
+    <Content Include="Images\LogoIncendio.png" />
+    <Content Include="Images\Manito.png" />
+    <Content Include="Images\next.png" />
+    <Content Include="Images\nurse.png" />
+    <Content Include="Images\operacion.png" />
+    <Content Include="Images\operacion24.png" />
+    <Content Include="Images\people-icon128x128.png" />
+    <Content Include="Images\phone3-32x32.png" />
+    <Content Include="Images\phone3.png" />
+    <Content Include="Images\RedFarmacias.png" />
+    <Content Include="Images\Reiniciar16x16.png" />
+    <Content Include="Images\Remover16x16.png" />
+    <Content Include="Images\Remover24x24.png" />
+    <Content Include="Images\Remover32x32.png" />
+    <Content Include="Images\RemoverMultiple16x16.png" />
+    <Content Include="Images\Reporte16x16.png" />
+    <Content Include="Images\Reporte24x24.png" />
+    <Content Include="Images\Reporte32x32.png" />
+    <Content Include="Images\Salida16x16.png" />
+    <Content Include="Images\Salida24x24.png" />
+    <Content Include="Images\Salida32x32.png" />
+    <Content Include="Images\Salvar16x16.png" />
+    <Content Include="Images\Salvar24x24.png" />
+    <Content Include="Images\Salvar32x32.png" />
+    <Content Include="Images\SCheck24.png" />
+    <Content Include="Images\sclogo.png" />
+    <Content Include="Images\sclogo2.png" />
+    <Content Include="Images\segcon.png" />
+    <Content Include="Images\SegconPattern.png" />
+    <Content Include="Images\SeguroAccidentesPersonalesLogo.png" />
+    <Content Include="Images\SeguroIncendioLogo.png" />
+    <Content Include="Images\SeguroMotoLogo.png" />
+    <Content Include="Images\ssl-gd-dark.gif" />
+    <Content Include="Images\truck.png" />
+    <Content Include="Images\typo-color.png" />
+    <Content Include="Images\update - copia.png" />
+    <Content Include="Images\update.png" />
+    <Content Include="Images\ValorAgregado0Deducible.png" />
+    <Content Include="Images\ValorAgregadoApoyoVehicular.png" />
+    <Content Include="Images\ValorAgregadoGPS.png" />
+    <Content Include="Images\ValorAgregadoPagoPorVentanilla.png" />
+    <Content Include="Images\ValorAgregadoPagoTarjetaCredito.png" />
+    <Content Include="Images\ValorAgregadoRedTalleres.png" />
+    <Content Include="Images\VidaPlenaEstudiante.png" />
+    <Content Include="Images\VS_GD_light.gif" />
+    <Content Include="Images\WebIcons\32x32\Add.png" />
+    <Content Include="Images\WebIcons\32x32\Adress Book.png" />
+    <Content Include="Images\WebIcons\32x32\Alert.png" />
+    <Content Include="Images\WebIcons\32x32\Battery.png" />
+    <Content Include="Images\WebIcons\32x32\Book.png" />
+    <Content Include="Images\WebIcons\32x32\Briefcase.png" />
+    <Content Include="Images\WebIcons\32x32\Calculator.png" />
+    <Content Include="Images\WebIcons\32x32\Calendar.png" />
+    <Content Include="Images\WebIcons\32x32\Clapperboard.png" />
+    <Content Include="Images\WebIcons\32x32\Clipboard.png" />
+    <Content Include="Images\WebIcons\32x32\Computer.png" />
+    <Content Include="Images\WebIcons\32x32\Dashboard.png" />
+    <Content Include="Images\WebIcons\32x32\Database.png" />
+    <Content Include="Images\WebIcons\32x32\Dictionary.png" />
+    <Content Include="Images\WebIcons\32x32\Document.png" />
+    <Content Include="Images\WebIcons\32x32\Done.png" />
+    <Content Include="Images\WebIcons\32x32\Down.png" />
+    <Content Include="Images\WebIcons\32x32\Download Crate.png" />
+    <Content Include="Images\WebIcons\32x32\Drawer.png" />
+    <Content Include="Images\WebIcons\32x32\Facebook.png" />
+    <Content Include="Images\WebIcons\32x32\Fav.png" />
+    <Content Include="Images\WebIcons\32x32\Floppy.png" />
+    <Content Include="Images\WebIcons\32x32\Folder.png" />
+    <Content Include="Images\WebIcons\32x32\HDD.png" />
+    <Content Include="Images\WebIcons\32x32\Heart.png" />
+    <Content Include="Images\WebIcons\32x32\Help.png" />
+    <Content Include="Images\WebIcons\32x32\Home.png" />
+    <Content Include="Images\WebIcons\32x32\Inbox.png" />
+    <Content Include="Images\WebIcons\32x32\Info.png" />
+    <Content Include="Images\WebIcons\32x32\Key.png" />
+    <Content Include="Images\WebIcons\32x32\Left.png" />
+    <Content Include="Images\WebIcons\32x32\Lifebuoy.png" />
+    <Content Include="Images\WebIcons\32x32\Lock.png" />
+    <Content Include="Images\WebIcons\32x32\Magic Wand.png" />
+    <Content Include="Images\WebIcons\32x32\Mail.png" />
+    <Content Include="Images\WebIcons\32x32\Note.png" />
+    <Content Include="Images\WebIcons\32x32\Pencil and Ruler.png" />
+    <Content Include="Images\WebIcons\32x32\Pencil.png" />
+    <Content Include="Images\WebIcons\32x32\Preferneces.png" />
+    <Content Include="Images\WebIcons\32x32\Printer.png" />
+    <Content Include="Images\WebIcons\32x32\Remove.png" />
+    <Content Include="Images\WebIcons\32x32\Right.png" />
+    <Content Include="Images\WebIcons\32x32\RSS.png" />
+    <Content Include="Images\WebIcons\32x32\Ruler.png" />
+    <Content Include="Images\WebIcons\32x32\Status.png" />
+    <Content Include="Images\WebIcons\32x32\Twitter.png" />
+    <Content Include="Images\WebIcons\32x32\Unlocked.png" />
+    <Content Include="Images\WebIcons\32x32\Up.png" />
+    <Content Include="Images\WebIcons\32x32\Wallet-Money.png" />
+    <Content Include="Images\WebIcons\32x32\Wallet.png" />
+    <Content Include="Images\World32x32.png" />
     <Content Include="SakilaEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SakilaEDM.edmx</DependentUpon>
@@ -139,6 +508,7 @@
       <DependentUpon>SakilaEDM.edmx</DependentUpon>
       <LastGenOutput>SakilaEDM.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\desarrollo.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -149,6 +519,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\segcon\segcon.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

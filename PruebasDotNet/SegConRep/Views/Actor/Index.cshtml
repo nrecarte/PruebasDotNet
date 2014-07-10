@@ -8,9 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Actor/Actriz", "Create")
 </p>
-<table class="table">
+<table class="table table-responsive table-condensed table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.first_name)
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.last_update)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.actor_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.actor_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.actor_id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.actor_id },new {@class = "btn btn-primary" }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.actor_id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.actor_id })
         </td>
     </tr>
 }
