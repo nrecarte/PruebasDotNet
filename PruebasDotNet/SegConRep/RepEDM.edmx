@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="segconrepModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="segconrepModelStoreContainer">
+          <EntitySet Name="aplicacion" EntityType="segconrepModel.Store.aplicacion" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="estadousuario" EntityType="segconrepModel.Store.estadousuario" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="grupo" EntityType="segconrepModel.Store.grupo" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="perfil" EntityType="segconrepModel.Store.perfil" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="perfilaplicacion" EntityType="segconrepModel.Store.perfilaplicacion" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="perfilprivilegio" EntityType="segconrepModel.Store.perfilprivilegio" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="privilegio" EntityType="segconrepModel.Store.privilegio" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="rol" EntityType="segconrepModel.Store.rol" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="rolperfil" EntityType="segconrepModel.Store.rolperfil" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="usuario" EntityType="segconrepModel.Store.usuario" store:Type="Tables" Schema="segconrep" />
+          <AssociationSet Name="fk_estado_integrante" Association="segconrepModel.Store.fk_estado_integrante">
+            <End Role="estadousuario" EntitySet="estadousuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_integrante" Association="segconrepModel.Store.fk_grupo_integrante">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfil_integrante" Association="segconrepModel.Store.fk_perfil_integrante">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilaplicacion_aplicacion" Association="segconrepModel.Store.fk_perfilaplicacion_aplicacion">
+            <End Role="aplicacion" EntitySet="aplicacion" />
+            <End Role="perfilaplicacion" EntitySet="perfilaplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilaplicacion_perfil" Association="segconrepModel.Store.fk_perfilaplicacion_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="perfilaplicacion" EntitySet="perfilaplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfiles" Association="segconrepModel.Store.fk_perfiles">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="rolperfil" EntitySet="rolperfil" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilprivilegio_perfilid" Association="segconrepModel.Store.fk_perfilprivilegio_perfilid">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilprivilegio_privilegioid" Association="segconrepModel.Store.fk_perfilprivilegio_privilegioid">
+            <End Role="privilegio" EntitySet="privilegio" />
+            <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_roles" Association="segconrepModel.Store.fk_roles">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rolperfil" EntitySet="rolperfil" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aplicacion">
+          <Key>
+            <PropertyRef Name="aplicacion_id" />
+          </Key>
+          <Property Name="aplicacion_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="aplicacion_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="aplicacion_Descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="estadousuario">
+          <Key>
+            <PropertyRef Name="estadousuario_id" />
+          </Key>
+          <Property Name="estadousuario_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="estadousuario_estado" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="estadousuario_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo_id" />
+          </Key>
+          <Property Name="grupo_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="grupo_nombre" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="perfil_id" />
+          </Key>
+          <Property Name="perfil_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="perfil_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="perfil_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="perfilaplicacion">
+          <Key>
+            <PropertyRef Name="perfilaplicacion_id" />
+          </Key>
+          <Property Name="perfilaplicacion_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="perfilaplicacion_perfil_id" Type="int" Nullable="false" />
+          <Property Name="perfilaplicacion_aplicacion_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="perfilprivilegio">
+          <Key>
+            <PropertyRef Name="perfilprivilegio_id" />
+          </Key>
+          <Property Name="perfilprivilegio_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="perfilprivilegio_perfil_id" Type="int" Nullable="false" />
+          <Property Name="perfilprivilegio_privilegio_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="privilegio">
+          <Key>
+            <PropertyRef Name="privilegio_id" />
+          </Key>
+          <Property Name="privilegio_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="privilegio_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="privilegio_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rol_nombre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="rol_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="rolperfil">
+          <Key>
+            <PropertyRef Name="rolperfil_id" />
+          </Key>
+          <Property Name="rolperfil_id" Type="int" Nullable="false" />
+          <Property Name="rolperfil_perfil_id" Type="int" />
+          <Property Name="rolperfil_rol_id" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+          </Key>
+          <Property Name="usuario_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_usuario" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="usuario_email" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="usuario_grupo_id" Type="int" />
+          <Property Name="usuario_perfil_id" Type="int" />
+          <Property Name="usuario_estadousuario_id" Type="int" />
+          <Property Name="usuario_clave" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="usuario_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_estado_integrante">
+          <End Role="estadousuario" Type="segconrepModel.Store.estadousuario" Multiplicity="0..1" />
+          <End Role="usuario" Type="segconrepModel.Store.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estadousuario">
+              <PropertyRef Name="estadousuario_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_estadousuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_integrante">
+          <End Role="grupo" Type="segconrepModel.Store.grupo" Multiplicity="0..1" />
+          <End Role="usuario" Type="segconrepModel.Store.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="grupo_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfil_integrante">
+          <End Role="perfil" Type="segconrepModel.Store.perfil" Multiplicity="0..1" />
+          <End Role="usuario" Type="segconrepModel.Store.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilaplicacion_aplicacion">
+          <End Role="aplicacion" Type="segconrepModel.Store.aplicacion" Multiplicity="1" />
+          <End Role="perfilaplicacion" Type="segconrepModel.Store.perfilaplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aplicacion">
+              <PropertyRef Name="aplicacion_id" />
+            </Principal>
+            <Dependent Role="perfilaplicacion">
+              <PropertyRef Name="perfilaplicacion_aplicacion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilaplicacion_perfil">
+          <End Role="perfil" Type="segconrepModel.Store.perfil" Multiplicity="1" />
+          <End Role="perfilaplicacion" Type="segconrepModel.Store.perfilaplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="perfilaplicacion">
+              <PropertyRef Name="perfilaplicacion_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfiles">
+          <End Role="perfil" Type="segconrepModel.Store.perfil" Multiplicity="0..1" />
+          <End Role="rolperfil" Type="segconrepModel.Store.rolperfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="rolperfil">
+              <PropertyRef Name="rolperfil_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilprivilegio_perfilid">
+          <End Role="perfil" Type="segconrepModel.Store.perfil" Multiplicity="1" />
+          <End Role="perfilprivilegio" Type="segconrepModel.Store.perfilprivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="perfilprivilegio">
+              <PropertyRef Name="perfilprivilegio_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilprivilegio_privilegioid">
+          <End Role="privilegio" Type="segconrepModel.Store.privilegio" Multiplicity="1" />
+          <End Role="perfilprivilegio" Type="segconrepModel.Store.perfilprivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="privilegio">
+              <PropertyRef Name="privilegio_id" />
+            </Principal>
+            <Dependent Role="perfilprivilegio">
+              <PropertyRef Name="perfilprivilegio_privilegio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_roles">
+          <End Role="rol" Type="segconrepModel.Store.rol" Multiplicity="0..1" />
+          <End Role="rolperfil" Type="segconrepModel.Store.rolperfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="rolperfil">
+              <PropertyRef Name="rolperfil_rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="segconrepModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="segconrepEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="aplicacion" EntityType="segconrepModel.aplicacion" />
+          <EntitySet Name="estadousuario" EntityType="segconrepModel.estadousuario" />
+          <EntitySet Name="grupo" EntityType="segconrepModel.grupo" />
+          <EntitySet Name="perfilaplicacion" EntityType="segconrepModel.perfilaplicacion" />
+          <EntitySet Name="perfilprivilegio" EntityType="segconrepModel.perfilprivilegio" />
+          <EntitySet Name="privilegio" EntityType="segconrepModel.privilegio" />
+          <EntitySet Name="rol" EntityType="segconrepModel.rol" />
+          <EntitySet Name="rolperfil" EntityType="segconrepModel.rolperfil" />
+          <AssociationSet Name="fk_perfilaplicacion_aplicacion" Association="segconrepModel.fk_perfilaplicacion_aplicacion">
+            <End Role="aplicacion" EntitySet="aplicacion" />
+            <End Role="perfilaplicacion" EntitySet="perfilaplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilprivilegio_privilegioid" Association="segconrepModel.fk_perfilprivilegio_privilegioid">
+            <End Role="privilegio" EntitySet="privilegio" />
+            <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_roles" Association="segconrepModel.fk_roles">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rolperfil" EntitySet="rolperfil" />
+          </AssociationSet>
+          <EntitySet Name="usuario" EntityType="segconrepModel.usuario" />
+          <AssociationSet Name="fk_estado_integrante" Association="segconrepModel.fk_estado_integrante">
+            <End Role="estadousuario" EntitySet="estadousuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_integrante" Association="segconrepModel.fk_grupo_integrante">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <EntitySet Name="perfil" EntityType="segconrepModel.perfil" />
+          <AssociationSet Name="fk_perfil_integrante" Association="segconrepModel.fk_perfil_integrante">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilaplicacion_perfil" Association="segconrepModel.fk_perfilaplicacion_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="perfilaplicacion" EntitySet="perfilaplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfiles" Association="segconrepModel.fk_perfiles">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="rolperfil" EntitySet="rolperfil" />
+          </AssociationSet>
+          <AssociationSet Name="fk_perfilprivilegio_perfilid" Association="segconrepModel.fk_perfilprivilegio_perfilid">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aplicacion">
+          <Key>
+            <PropertyRef Name="aplicacion_id" />
+          </Key>
+          <Property Name="aplicacion_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="aplicacion_nombre" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="aplicacion_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="perfilaplicacion" Relationship="segconrepModel.fk_perfilaplicacion_aplicacion" FromRole="aplicacion" ToRole="perfilaplicacion" />
+        </EntityType>
+        <EntityType Name="estadousuario">
+          <Key>
+            <PropertyRef Name="estadousuario_id" />
+          </Key>
+          <Property Name="estadousuario_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="estadousuario_estado" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="estadousuario_descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuario" Relationship="segconrepModel.fk_estado_integrante" FromRole="estadousuario" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo_id" />
+          </Key>
+          <Property Name="grupo_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="grupo_nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuario" Relationship="segconrepModel.fk_grupo_integrante" FromRole="grupo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="perfilaplicacion">
+          <Key>
+            <PropertyRef Name="perfilaplicacion_id" />
+          </Key>
+          <Property Name="perfilaplicacion_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="perfilaplicacion_perfil_id" Type="Int32" Nullable="false" />
+          <Property Name="perfilaplicacion_aplicacion_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="aplicacion" Relationship="segconrepModel.fk_perfilaplicacion_aplicacion" FromRole="perfilaplicacion" ToRole="aplicacion" />
+          <NavigationProperty Name="perfil" Relationship="segconrepModel.fk_perfilaplicacion_perfil" FromRole="perfilaplicacion" ToRole="perfil" />
+        </EntityType>
+        <EntityType Name="perfilprivilegio">
+          <Key>
+            <PropertyRef Name="perfilprivilegio_id" />
+          </Key>
+          <Property Name="perfilprivilegio_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="perfilprivilegio_perfil_id" Type="Int32" Nullable="false" />
+          <Property Name="perfilprivilegio_privilegio_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="privilegio" Relationship="segconrepModel.fk_perfilprivilegio_privilegioid" FromRole="perfilprivilegio" ToRole="privilegio" />
+          <NavigationProperty Name="perfil" Relationship="segconrepModel.fk_perfilprivilegio_perfilid" FromRole="perfilprivilegio" ToRole="perfil" />
+        </EntityType>
+        <EntityType Name="privilegio">
+          <Key>
+            <PropertyRef Name="privilegio_id" />
+          </Key>
+          <Property Name="privilegio_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="privilegio_nombre" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="privilegio_descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="perfilprivilegio" Relationship="segconrepModel.fk_perfilprivilegio_privilegioid" FromRole="privilegio" ToRole="perfilprivilegio" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="rol_nombre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="rol_descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="rolperfil" Relationship="segconrepModel.fk_roles" FromRole="rol" ToRole="rolperfil" />
+        </EntityType>
+        <EntityType Name="rolperfil">
+          <Key>
+            <PropertyRef Name="rolperfil_id" />
+          </Key>
+          <Property Name="rolperfil_id" Type="Int32" Nullable="false" />
+          <Property Name="rolperfil_perfil_id" Type="Int32" />
+          <Property Name="rolperfil_rol_id" Type="Int32" />
+          <NavigationProperty Name="rol" Relationship="segconrepModel.fk_roles" FromRole="rolperfil" ToRole="rol" />
+          <NavigationProperty Name="perfil" Relationship="segconrepModel.fk_perfiles" FromRole="rolperfil" ToRole="perfil" />
+        </EntityType>
+        <Association Name="fk_perfilaplicacion_aplicacion">
+          <End Role="aplicacion" Type="segconrepModel.aplicacion" Multiplicity="1" />
+          <End Role="perfilaplicacion" Type="segconrepModel.perfilaplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aplicacion">
+              <PropertyRef Name="aplicacion_id" />
+            </Principal>
+            <Dependent Role="perfilaplicacion">
+              <PropertyRef Name="perfilaplicacion_aplicacion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilprivilegio_privilegioid">
+          <End Role="privilegio" Type="segconrepModel.privilegio" Multiplicity="1" />
+          <End Role="perfilprivilegio" Type="segconrepModel.perfilprivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="privilegio">
+              <PropertyRef Name="privilegio_id" />
+            </Principal>
+            <Dependent Role="perfilprivilegio">
+              <PropertyRef Name="perfilprivilegio_privilegio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_roles">
+          <End Role="rol" Type="segconrepModel.rol" Multiplicity="0..1" />
+          <End Role="rolperfil" Type="segconrepModel.rolperfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="rolperfil">
+              <PropertyRef Name="rolperfil_rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+          </Key>
+          <Property Type="Int32" Name="usuario_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="usuario_usuario" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="usuario_email" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="usuario_grupo_id" />
+          <Property Type="Int32" Name="usuario_perfil_id" />
+          <Property Type="Int32" Name="usuario_estadousuario_id" />
+          <Property Type="String" Name="usuario_clave" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="usuario_nombre" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="estadousuario" Relationship="segconrepModel.fk_estado_integrante" FromRole="usuario" ToRole="estadousuario" />
+          <NavigationProperty Name="grupo" Relationship="segconrepModel.fk_grupo_integrante" FromRole="usuario" ToRole="grupo" />
+          <NavigationProperty Name="perfil" Relationship="segconrepModel.fk_perfil_integrante" FromRole="usuario" ToRole="perfil" />
+        </EntityType>
+        <Association Name="fk_estado_integrante">
+          <End Type="segconrepModel.estadousuario" Role="estadousuario" Multiplicity="0..1" />
+          <End Type="segconrepModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estadousuario">
+              <PropertyRef Name="estadousuario_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_estadousuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_integrante">
+          <End Type="segconrepModel.grupo" Role="grupo" Multiplicity="0..1" />
+          <End Type="segconrepModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="grupo_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="perfil_id" />
+          </Key>
+          <Property Type="Int32" Name="perfil_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="perfil_nombre" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="perfil_descripcion" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuario" Relationship="segconrepModel.fk_perfil_integrante" FromRole="perfil" ToRole="usuario" />
+          <NavigationProperty Name="perfilaplicacion" Relationship="segconrepModel.fk_perfilaplicacion_perfil" FromRole="perfil" ToRole="perfilaplicacion" />
+          <NavigationProperty Name="rolperfil" Relationship="segconrepModel.fk_perfiles" FromRole="perfil" ToRole="rolperfil" />
+          <NavigationProperty Name="perfilprivilegio" Relationship="segconrepModel.fk_perfilprivilegio_perfilid" FromRole="perfil" ToRole="perfilprivilegio" />
+        </EntityType>
+        <Association Name="fk_perfil_integrante">
+          <End Type="segconrepModel.perfil" Role="perfil" Multiplicity="0..1" />
+          <End Type="segconrepModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilaplicacion_perfil">
+          <End Type="segconrepModel.perfil" Role="perfil" Multiplicity="1" />
+          <End Type="segconrepModel.perfilaplicacion" Role="perfilaplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="perfilaplicacion">
+              <PropertyRef Name="perfilaplicacion_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfiles">
+          <End Type="segconrepModel.perfil" Role="perfil" Multiplicity="0..1" />
+          <End Type="segconrepModel.rolperfil" Role="rolperfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="rolperfil">
+              <PropertyRef Name="rolperfil_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_perfilprivilegio_perfilid">
+          <End Type="segconrepModel.perfil" Role="perfil" Multiplicity="1" />
+          <End Type="segconrepModel.perfilprivilegio" Role="perfilprivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="perfil_id" />
+            </Principal>
+            <Dependent Role="perfilprivilegio">
+              <PropertyRef Name="perfilprivilegio_perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="segconrepModelStoreContainer" CdmEntityContainer="segconrepEntities">
+          <EntitySetMapping Name="aplicacion">
+            <EntityTypeMapping TypeName="segconrepModel.aplicacion">
+              <MappingFragment StoreEntitySet="aplicacion">
+                <ScalarProperty Name="aplicacion_id" ColumnName="aplicacion_id" />
+                <ScalarProperty Name="aplicacion_nombre" ColumnName="aplicacion_nombre" />
+                <ScalarProperty Name="aplicacion_Descripcion" ColumnName="aplicacion_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estadousuario">
+            <EntityTypeMapping TypeName="segconrepModel.estadousuario">
+              <MappingFragment StoreEntitySet="estadousuario">
+                <ScalarProperty Name="estadousuario_id" ColumnName="estadousuario_id" />
+                <ScalarProperty Name="estadousuario_estado" ColumnName="estadousuario_estado" />
+                <ScalarProperty Name="estadousuario_descripcion" ColumnName="estadousuario_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo">
+            <EntityTypeMapping TypeName="segconrepModel.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="grupo_nombre" ColumnName="grupo_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfilaplicacion">
+            <EntityTypeMapping TypeName="segconrepModel.perfilaplicacion">
+              <MappingFragment StoreEntitySet="perfilaplicacion">
+                <ScalarProperty Name="perfilaplicacion_id" ColumnName="perfilaplicacion_id" />
+                <ScalarProperty Name="perfilaplicacion_perfil_id" ColumnName="perfilaplicacion_perfil_id" />
+                <ScalarProperty Name="perfilaplicacion_aplicacion_id" ColumnName="perfilaplicacion_aplicacion_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfilprivilegio">
+            <EntityTypeMapping TypeName="segconrepModel.perfilprivilegio">
+              <MappingFragment StoreEntitySet="perfilprivilegio">
+                <ScalarProperty Name="perfilprivilegio_id" ColumnName="perfilprivilegio_id" />
+                <ScalarProperty Name="perfilprivilegio_perfil_id" ColumnName="perfilprivilegio_perfil_id" />
+                <ScalarProperty Name="perfilprivilegio_privilegio_id" ColumnName="perfilprivilegio_privilegio_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="privilegio">
+            <EntityTypeMapping TypeName="segconrepModel.privilegio">
+              <MappingFragment StoreEntitySet="privilegio">
+                <ScalarProperty Name="privilegio_id" ColumnName="privilegio_id" />
+                <ScalarProperty Name="privilegio_nombre" ColumnName="privilegio_nombre" />
+                <ScalarProperty Name="privilegio_descripcion" ColumnName="privilegio_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="segconrepModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+                <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolperfil">
+            <EntityTypeMapping TypeName="segconrepModel.rolperfil">
+              <MappingFragment StoreEntitySet="rolperfil">
+                <ScalarProperty Name="rolperfil_id" ColumnName="rolperfil_id" />
+                <ScalarProperty Name="rolperfil_perfil_id" ColumnName="rolperfil_perfil_id" />
+                <ScalarProperty Name="rolperfil_rol_id" ColumnName="rolperfil_rol_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="segconrepModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="usuario_nombre" ColumnName="usuario_nombre" />
+                <ScalarProperty Name="usuario_clave" ColumnName="usuario_clave" />
+                <ScalarProperty Name="usuario_estadousuario_id" ColumnName="usuario_estadousuario_id" />
+                <ScalarProperty Name="usuario_perfil_id" ColumnName="usuario_perfil_id" />
+                <ScalarProperty Name="usuario_grupo_id" ColumnName="usuario_grupo_id" />
+                <ScalarProperty Name="usuario_email" ColumnName="usuario_email" />
+                <ScalarProperty Name="usuario_usuario" ColumnName="usuario_usuario" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfil">
+            <EntityTypeMapping TypeName="segconrepModel.perfil">
+              <MappingFragment StoreEntitySet="perfil">
+                <ScalarProperty Name="perfil_descripcion" ColumnName="perfil_descripcion" />
+                <ScalarProperty Name="perfil_nombre" ColumnName="perfil_nombre" />
+                <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

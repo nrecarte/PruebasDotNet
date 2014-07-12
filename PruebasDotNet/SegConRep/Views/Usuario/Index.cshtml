@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SegConRep.usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario_clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estadousuario.estadousuario_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grupo.grupo_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.perfil_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario_clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estadousuario.estadousuario_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grupo.grupo_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.perfil.perfil_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.usuario_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.usuario_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.usuario_id })
+        </td>
+    </tr>
+}
+
+</table>

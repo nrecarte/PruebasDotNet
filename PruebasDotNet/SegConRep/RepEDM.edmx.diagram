@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0aa9f81b9c24b41879caebf3b54ed2e" Name="Diagram1">
+        <EntityTypeShape EntityType="segconrepModel.aplicacion" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.estadousuario" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.grupo" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.perfilaplicacion" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.perfilprivilegio" Width="1.5" PointX="3.625" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.privilegio" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.rol" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="segconrepModel.rolperfil" Width="1.5" PointX="4" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="segconrepModel.fk_perfilaplicacion_aplicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="segconrepModel.fk_perfilprivilegio_privilegioid" ManuallyRouted="false" />
+        <AssociationConnector Association="segconrepModel.fk_roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="segconrepModel.usuario" Width="1.5" PointX="5.875" PointY="6.5" />
+        <AssociationConnector Association="segconrepModel.fk_estado_integrante" />
+        <AssociationConnector Association="segconrepModel.fk_grupo_integrante" />
+        <EntityTypeShape EntityType="segconrepModel.perfil" Width="1.5" PointX="9" PointY="6.125" />
+        <AssociationConnector Association="segconrepModel.fk_perfil_integrante" />
+        <AssociationConnector Association="segconrepModel.fk_perfilaplicacion_perfil" />
+        <AssociationConnector Association="segconrepModel.fk_perfiles" />
+        <AssociationConnector Association="segconrepModel.fk_perfilprivilegio_perfilid" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

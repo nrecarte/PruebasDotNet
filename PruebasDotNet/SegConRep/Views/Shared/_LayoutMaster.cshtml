@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Rastreo para Emisión de Pólizas</title>
+    <title>Segcon - Rastreo para Emisión de Pólizas</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/bootstrap.css")
@@ -37,19 +37,16 @@
                                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
                                         class="icon-bar"></span><span class="icon-bar"></span>
                                 </button>
-                                <div class="segcon_navbar-brand">
-                                    @Html.ActionLink(" ", "Index", null, new { @class = "segcon_home_icon" })
-                                </div>
 
-
+                                @Html.ActionLink("Home", "Index", "Home", new { @class = "segcon_navbar-brand" })
 
                             </div>
                             <div class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
+                                <ul class="nav navbar-nav navbar">
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i>Perfil<b class="caret"></b></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i>Administración<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="font-size: small;">
-                                            <li><a href="Perfil.aspx"><i class="glyphicon glyphicon-star"></i>Acerca de Nosotros</a></li>
+                                            <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
                                             <li><a href="Ejecutivos.aspx"><i class="glyphicon glyphicon-user"></i>Ejecutivos</a></li>
                                             <li><a href="Comerciales.aspx"><i class="glyphicon glyphicon-picture"></i>Comerciales</a></li>
                                             @*<%--<li class="divider"></li>--%>*@
@@ -58,7 +55,7 @@
                                     </li>
                                 </ul>
 
-
+                                
 
                                 <div class="col-lg-3 pull-right">
                                     <a href="SegConDiccionario.aspx">
@@ -70,18 +67,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="float-right">
-
-                <nav>
-                    <ul id="menu">
-                        <li></li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>

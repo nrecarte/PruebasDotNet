@@ -131,6 +131,7 @@
     <Content Include="Content\segcon\menubar.css" />
     <Content Include="Content\segcon\segcon.css" />
     <Content Include="Content\segcon\test.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -509,6 +510,23 @@
       <LastGenOutput>SakilaEDM.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\desarrollo.pubxml" />
+    <EntityDeploy Include="RepEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RepEDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="RepEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RepEDM.edmx</DependentUpon>
+      <LastGenOutput>RepEDM.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="RepEDM.edmx.diagram">
+      <DependentUpon>RepEDM.edmx</DependentUpon>
+    </Content>
+    <Content Include="RepEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RepEDM.edmx</DependentUpon>
+      <LastGenOutput>RepEDM.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -532,6 +550,9 @@
     <Compile Include="address.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="aplicacion.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="category.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
@@ -540,7 +561,17 @@
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ActorController.cs" />
+    <Compile Include="Controllers\AplicacionController.cs" />
+    <Compile Include="Controllers\EstadoUsuarioController.cs" />
+    <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PerfilAplicacionController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\PerfilPrivilegioController.cs" />
+    <Compile Include="Controllers\PrivilegioController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
+    <Compile Include="Controllers\RolPerfilController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="country.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
@@ -549,6 +580,9 @@
     </Compile>
     <Compile Include="customer_list.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estadousuario.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="film.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
@@ -568,6 +602,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="grupo.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="inventory.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
@@ -580,9 +617,42 @@
     <Compile Include="payment.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="perfil.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="perfilaplicacion.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="perfilprivilegio.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="privilegio.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rental.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepEDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="rol.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rolperfil.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SakilaEDM.Context.cs">
       <AutoGen>True</AutoGen>
@@ -611,6 +681,9 @@
     <Compile Include="store.cs">
       <DependentUpon>SakilaEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>RepEDM.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -623,6 +696,56 @@
     <Content Include="Views\Actor\Edit.cshtml" />
     <Content Include="Views\Actor\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\EstadoUsuario\Create.cshtml" />
+    <Content Include="Views\EstadoUsuario\Delete.cshtml" />
+    <Content Include="Views\EstadoUsuario\Details.cshtml" />
+    <Content Include="Views\EstadoUsuario\Edit.cshtml" />
+    <Content Include="Views\EstadoUsuario\Index.cshtml" />
+    <Content Include="Views\Grupo\Create.cshtml" />
+    <Content Include="Views\Grupo\Delete.cshtml" />
+    <Content Include="Views\Grupo\Details.cshtml" />
+    <Content Include="Views\Grupo\Edit.cshtml" />
+    <Content Include="Views\Grupo\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Perfil\Create.cshtml" />
+    <Content Include="Views\Perfil\Delete.cshtml" />
+    <Content Include="Views\Perfil\Details.cshtml" />
+    <Content Include="Views\Perfil\Edit.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Privilegio\Create.cshtml" />
+    <Content Include="Views\Privilegio\Delete.cshtml" />
+    <Content Include="Views\Privilegio\Details.cshtml" />
+    <Content Include="Views\Privilegio\Edit.cshtml" />
+    <Content Include="Views\Privilegio\Index.cshtml" />
+    <Content Include="Views\PerfilPrivilegio\Create.cshtml" />
+    <Content Include="Views\PerfilPrivilegio\Delete.cshtml" />
+    <Content Include="Views\PerfilPrivilegio\Details.cshtml" />
+    <Content Include="Views\PerfilPrivilegio\Edit.cshtml" />
+    <Content Include="Views\PerfilPrivilegio\Index.cshtml" />
+    <Content Include="Views\Aplicacion\Create.cshtml" />
+    <Content Include="Views\Aplicacion\Delete.cshtml" />
+    <Content Include="Views\Aplicacion\Details.cshtml" />
+    <Content Include="Views\Aplicacion\Edit.cshtml" />
+    <Content Include="Views\Aplicacion\Index.cshtml" />
+    <Content Include="Views\PerfilAplicacion\Create.cshtml" />
+    <Content Include="Views\PerfilAplicacion\Delete.cshtml" />
+    <Content Include="Views\PerfilAplicacion\Details.cshtml" />
+    <Content Include="Views\PerfilAplicacion\Edit.cshtml" />
+    <Content Include="Views\PerfilAplicacion\Index.cshtml" />
+    <Content Include="Views\Rol\Create.cshtml" />
+    <Content Include="Views\Rol\Delete.cshtml" />
+    <Content Include="Views\Rol\Details.cshtml" />
+    <Content Include="Views\Rol\Edit.cshtml" />
+    <Content Include="Views\Rol\Index.cshtml" />
+    <Content Include="Views\RolPerfil\Create.cshtml" />
+    <Content Include="Views\RolPerfil\Delete.cshtml" />
+    <Content Include="Views\RolPerfil\Details.cshtml" />
+    <Content Include="Views\RolPerfil\Edit.cshtml" />
+    <Content Include="Views\RolPerfil\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

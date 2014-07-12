@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SegConRep.rolperfil>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rol.rol_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.perfil_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rol.rol_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.perfil.perfil_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.rolperfil_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.rolperfil_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.rolperfil_id })
+        </td>
+    </tr>
+}
+
+</table>

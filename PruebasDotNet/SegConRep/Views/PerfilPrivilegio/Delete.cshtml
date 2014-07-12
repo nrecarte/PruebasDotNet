@@ -1,0 +1,41 @@
+﻿@model SegConRep.perfilprivilegio
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>perfilprivilegio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.privilegio.privilegio_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.privilegio.privilegio_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.perfil_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.perfil.perfil_nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
