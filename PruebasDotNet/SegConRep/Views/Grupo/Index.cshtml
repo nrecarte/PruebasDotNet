@@ -1,19 +1,20 @@
 ﻿@model IEnumerable<SegConRep.grupo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Grupos";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Grupos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Grupo", "Create", null, new { @class = "btn btn-primary"})
 </p>
-<table class="table">
+<table class="table table-responsive btn table-condensed btn table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.grupo_nombre)
+            Nombre
+            @*@Html.DisplayNameFor(model => model.grupo_nombre)*@
         </th>
         <th></th>
     </tr>
@@ -24,9 +25,9 @@
             @Html.DisplayFor(modelItem => item.grupo_nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.grupo_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.grupo_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.grupo_id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.grupo_id }, new {@class = "btn btn-sm btn-primary" })
+            @Html.ActionLink("Detalle", "Details", new { id=item.grupo_id },new {@class = "btn btn-sm btn-info" })
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.grupo_id },new {@class = "btn btn-sm btn-danger" })
         </td>
     </tr>
 }

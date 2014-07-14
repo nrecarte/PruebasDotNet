@@ -1,11 +1,11 @@
 ﻿@model SegConRep.grupo
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Creación de Grupos";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Creación de un Grupo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -18,7 +18,8 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.grupo_nombre, new { @class = "control-label col-md-2" })
+            @Html.Label("Nombre",new { @class = "control-label col-md-2" })
+            @* @Html.LabelFor(model => model.grupo_nombre, new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.grupo_nombre)
                 @Html.ValidationMessageFor(model => model.grupo_nombre)
@@ -34,9 +35,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index",null,new { @class = "btn btn-sm btn-primary" }))
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,11 +1,11 @@
 ﻿@model SegConRep.usuario
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Creación de Nuevo Usuario";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Creación de Nuevo Usuario</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>usuario</h4>
+        <h4>Esta es una prueba para usuarios</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -82,9 +82,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

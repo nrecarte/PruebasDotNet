@@ -5,21 +5,24 @@
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Actores / Actrices</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Actor/Actriz", "Create")
+    @Html.ActionLink("Nuevo Actor/Actriz", "Create",null, new { @class = "btn btn-primary"})
 </p>
 <table class="table table-responsive table-condensed table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.first_name)
+            Nombre
+           @* @Html.DisplayNameFor(model => model.first_name)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.last_name)
+            Apellido
+            @*@Html.DisplayNameFor(model => model.last_name)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.last_update)
+            Ultima Actualización
+            @*@Html.DisplayNameFor(model => model.last_update)*@
         </th>
         <th></th>
     </tr>
