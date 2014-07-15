@@ -1,0 +1,143 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Segcon - Rastreo para Emisión de Pólizas</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap.lumen.css")
+    @Styles.Render("~/Content/segcon/segcon.css")
+    @Styles.Render("~/Content/segcon/SegconInputValidation.css")
+</head>
+<body>
+    <header>
+        @* Encabezados *@
+        <div class="jumbotronsegcon">
+            <div class="container">
+                <div class="row">
+                      <div class="col-lg-1"></div>
+                    <div class="col-lg-5">
+                        <div class="segcon_logo pull-left"></div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="segcon_45yearslogo img-responsive  pull-right"></div>
+                    </div>
+                      <div class="col-lg-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="segcon_goldline"></div>
+    </header>
+    @* Contenido *@
+    <div id="body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    @RenderSection("featured", required: false)
+                    <section class="content-wrapper main-content clear-fix">
+                        @RenderBody()
+                    </section>
+                </div>
+                <div class="col-lg-1"></div>
+
+            </div>
+        </div>
+    </div>
+    @* Pie de Pagina *@
+    <footer>
+        <div style="color: #FFFFFF">
+            <div class="jumbotronsegcon">
+            </div>
+            @*Footer*@
+            <div style="font-size: small; background-color: #2C3E50;">
+                <div class="container">
+                      <div class="col-lg-1"></div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <legend style="color: #000000">
+                                <div class="t">
+                                    <a href="UbicacionesGeograficas.aspx" target="_blank">Ubicación
+                                        de <a style="color: #FF9900">Sucursales</a>
+                                    </a>
+                                </div>
+                            </legend>
+                        </div>
+                        <div class="row">
+                            <address>
+                                <strong>Oficina Principal</strong><br />
+                                3ra Ave, 2-3 Calle S.O. , San Pedro Sula, Honduras.
+                            </address>
+                            <address>
+                                <strong>Sucursal Tegucigalpa </strong>
+                                <br />
+                                Centro Comercial Miramontes
+                                <br />
+                                2do. Nivel.
+                            </address>
+                            <address>
+                                <strong>Sucursal Novaprisa</strong>
+                                <br />
+                                Bulevar Morazan, 9–10 Ave. N.O. , San Pedro Sula, Honduras
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <!--Bloque 2-->
+                        <div class="row">
+                            <legend style="color: #007ACC">Lineas de <a style="color: #FF9900">Contácto</a></legend>
+                        </div>
+                        <div class="row">
+                            <div class="glyphicon glyphicon-phone-alt"></div>
+                            Teléfono : +504 2550-0880
+                        </div>
+                        <div class="row">
+                            <div class="glyphicon glyphicon-plus-sign"></div>
+                            Asistencia Vial : +504 2216-1620
+                        </div>
+                        <div class="row">
+                            <div class="glyphicon  glyphicon-globe"></div>
+                            E-mail : seguros@continental.hn
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <!--Bloque 3-->
+                        <div class="row">
+                            <legend style="color: #007ACC">Redes <a style="color: #FF9900">Sociales</a></legend>
+                        </div>
+                        <div class="row">
+                            Te invitamos a que nos sigas en :
+                        </div>
+                        <div class="row">
+                            <a href="http://www.facebook.com/pages/Seguros-Continental-SA/159925417407580" target="_blank">
+                                <div class="segcon_facebook_icon"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+            <div class="footersegcon2">
+                <div class="container">
+                    <div class="col-lg-6" style="padding: 0px; color: #000000; vertical-align: middle; text-align: left; font-size: small;">
+                        <p>&copy; @DateTime.Now.Year - <a href="https://www.segcon.hn" title="Seguros Continental S.A." target="_blank">Seguros Continental S.A.</a></p>
+                    </div>
+                    <div class="col-lg-6" style="padding: 0px; color: #000000; vertical-align: middle; text-align: right; font-size: small;">
+                        <img src="~/Images/VS_GD_light.gif" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    @Scripts.Render("~/Scripts/jquery-2.1.1.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @Scripts.Render("~/Scripts/segcon/segcon.js")
+    @Scripts.Render("~/Scripts/segcon/SegconInputValidation.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

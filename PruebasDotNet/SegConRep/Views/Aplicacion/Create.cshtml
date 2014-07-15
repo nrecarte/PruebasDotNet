@@ -5,46 +5,62 @@
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+<div class="row-fluid">
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>aplicacion</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+        <div class="form-horizontal">
+            <legend><strong class="text-info">Creación</strong> de Aplicaciones</legend>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.aplicacion_nombre, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.aplicacion_nombre)
-                @Html.ValidationMessageFor(model => model.aplicacion_nombre)
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.Label("Nombre de la Aplicación", new { @class = "control-label col-md-2" })
+                @*@Html.LabelFor(model => model.aplicacion_nombre, new { @class = "control-label col-md-2" })*@
+
+                <div class="col-md-4">
+                    <div class="input-group" data-validate="length" data-length="5">
+                        @Html.EditorFor(model => model.aplicacion_nombre, new
+                        {
+                            htmlAttributes = new { @class = "form-control", id = "txtNombre", placeholder = "Nombre de la Aplicación", maxlength = "75", required = "" }
+                        })
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.aplicacion_nombre)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Descripción de la Aplicación", new { @class = "control-label col-md-2" })
+                @*@Html.LabelFor(model => model.aplicacion_Descripcion, new { @class = "control-label col-md-2" })*@
+                <div class="col-md-4">
+                    <div class="input-group" data-validate="length" data-length="5">
+                        @Html.EditorFor(model => model.aplicacion_Descripcion, new
+                        {
+                            htmlAttributes = new { @class = "form-control", id = "txtDescripcion", placeholder = "Descripción de la Aplicación", maxlength = "250", required = "" }
+                        })
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.aplicacion_Descripcion)
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Crear" class="btn btn-success" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.aplicacion_Descripcion, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.aplicacion_Descripcion)
-                @Html.ValidationMessageFor(model => model.aplicacion_Descripcion)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
+    <hr />
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-sm btn-primary" })
+    <br />
+    <br />
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@

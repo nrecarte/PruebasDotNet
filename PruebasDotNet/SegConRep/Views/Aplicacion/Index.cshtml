@@ -4,37 +4,39 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
-
-<h2>Index</h2>
+<br />
+<legend><strong class="text-info">Aplicaciones</strong> Registradas</legend>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Nueva Aplicación", "Create",null, new { @class = "btn btn-primary"})
 </p>
-<table class="table">
+<table class="table table-condensed table-responsive table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.aplicacion_nombre)
+        <th>Nombre de la Aplicación
+            @*@Html.DisplayNameFor(model => model.aplicacion_nombre)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.aplicacion_Descripcion)
+        <th>Descripción de la Aplicación
+            @*@Html.DisplayNameFor(model => model.aplicacion_Descripcion)*@
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.aplicacion_nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.aplicacion_Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.aplicacion_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.aplicacion_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.aplicacion_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.aplicacion_nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aplicacion_Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.aplicacion_id }, new { @class = "btn btn-sm btn-primary" })
+                @Html.ActionLink("Detalle", "Details", new { id = item.aplicacion_id }, new { @class = "btn btn-sm btn-info" })
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.aplicacion_id }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />

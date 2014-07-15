@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/bootstrap.lumen.css")
     @Styles.Render("~/Content/segcon/segcon.css")
+    @Styles.Render("~/Content/segcon/SegconInputValidation.css")
 </head>
 <body>
     <header>
@@ -35,11 +36,15 @@
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
-                                                                                                                     class="icon-bar"></span><span class="icon-bar"></span>
+                                        class="icon-bar"></span><span class="icon-bar"></span>
                                 </button>
-
-                                @Html.ActionLink("Home", "Index", "Home", new { @class = "segcon_navbar-brand" })
-
+                                <a class="segcon_navbar-brand" href='@Url.Action("Index", "Home")'>
+                                    <div class="segcon_home_icon"></div>
+                                </a>
+                                @* @Html.ActionLink("Home", "Index", "Home", null, new
+                                    {
+                                        @class = "segcon_navbar-brand"
+                                    })*@
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar">
@@ -47,18 +52,31 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i>Administración<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="font-size: small;">
                                             <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
-                                            <li><a href="Ejecutivos.aspx"><i class="glyphicon glyphicon-user"></i>Ejecutivos</a></li>
-                                            <li><a href="Comerciales.aspx"><i class="glyphicon glyphicon-picture"></i>Comerciales</a></li>
-                                            @*<%--<li class="divider"></li>--%>*@
-                                            <li><a href="Reaseguradores.aspx"><i class="glyphicon glyphicon-globe"></i>Reaseguradores</a></li>
+                                            <li>@Html.ActionLink("Grupos", "Index", "Grupo")</li>
+                                            <li>@Html.ActionLink("Aplicaciones", "Index", "Aplicacion")</li>
+                                            <li>@Html.ActionLink("Roles", "Index", "Rol")</li>
+                                            <li>@Html.ActionLink("Perfiles", "Index", "Perfil")</li>
+                                            <li>@Html.ActionLink("Estados de Usuario", "Index", "EstadoUsuario")</li>
+                                            <li class="divider"></li>
+                                            <li>@Html.ActionLink("Roles por Perfil", "Index", "RolPerfil")</li>
+                                            <li>@Html.ActionLink("Aplicaciones por Perfil", "Index", "PerfilAplicacion")</li>
+                                            <li>@Html.ActionLink("Privilegios", "Index", "Privilegio")</li>
+                                            <li>@Html.ActionLink("Privilegios por Perfil", "Index", "PerfilPrivilegio")</li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tower"></i>Servicios<b class="caret"></b></a>
+                                        <ul class="dropdown-menu" style="font-size: small;">
+                                            <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                                            <li class="divider"></li>
                                         </ul>
                                     </li>
                                 </ul>
-                                <div class="col-lg-3 pull-right">
+                                @* <div class="col-lg-3 pull-right">
                                     <a href="SegConDiccionario.aspx">
                                         <img src="img/Diccionario.png" align="right" style="padding: 20px 0px 20px 20px;" /></a>
 
-                                </div>
+                                </div>*@
 
                             </div>
                         </div>
@@ -168,6 +186,7 @@
     @Scripts.Render("~/Scripts/jquery-2.1.1.js")
     @Scripts.Render("~/Scripts/bootstrap.js")
     @Scripts.Render("~/Scripts/segcon/segcon.js")
+    @Scripts.Render("~/Scripts/segcon/SegconInputValidation.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

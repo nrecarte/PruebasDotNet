@@ -5,23 +5,23 @@
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Delete</h2>
+<br />
+<legend><strong class="text-info">Eliminación</strong> de Aplicaciones</legend>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro/a que desea eliminar esta Aplicación?</h3>
 <div>
-    <h4>aplicacion</h4>
-    <hr />
+
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.aplicacion_nombre)
+        <dt>Nombre
+            @*@Html.DisplayNameFor(model => model.aplicacion_nombre)*@
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.aplicacion_nombre)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.aplicacion_Descripcion)
+        <dt>Descripción
+            @*@Html.DisplayNameFor(model => model.aplicacion_Descripcion)*@
         </dt>
 
         <dd>
@@ -30,12 +30,14 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
         </div>
     }
+    <br />
 </div>
