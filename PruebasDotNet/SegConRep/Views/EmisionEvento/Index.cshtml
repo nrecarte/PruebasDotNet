@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SegConRep.emisionevento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionevento_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionevento_fecha_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionevento_numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionevento_usuario_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionevento_fecha_fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventoestado.eventoestado_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emisionlimite.emisionlimite_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poliza.poliza_numero)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionevento_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionevento_fecha_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionevento_numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionevento_usuario_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionevento_fecha_fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventoestado.eventoestado_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emisionlimite.emisionlimite_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poliza.poliza_numero)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.emisionevento_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.emisionevento_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.emisionevento_id })
+        </td>
+    </tr>
+}
+
+</table>

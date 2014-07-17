@@ -22,9 +22,11 @@ namespace SegConRep
         public Nullable<int> usuario_estadousuario_id { get; set; }
         public string usuario_clave { get; set; }
         public string usuario_nombre { get; set; }
+        public Nullable<int> usuario_departamento_id { get; set; }
     
         public virtual estadousuario estadousuario { get; set; }
         public virtual grupo grupo { get; set; }
         public virtual perfil perfil { get; set; }
+        public virtual departamento departamento { get; set; }
     }
 }

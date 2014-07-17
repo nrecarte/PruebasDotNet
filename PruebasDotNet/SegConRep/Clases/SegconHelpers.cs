@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Prueba.Clases
+namespace SegConRep.Clases
 {
     public class SegconHelpers
     {

@@ -19,11 +19,26 @@
         <EntityTypeShape EntityType="segconrepModel.usuario" Width="1.5" PointX="5.875" PointY="6.5" />
         <AssociationConnector Association="segconrepModel.fk_estado_integrante" />
         <AssociationConnector Association="segconrepModel.fk_grupo_integrante" />
-        <EntityTypeShape EntityType="segconrepModel.perfil" Width="1.5" PointX="9" PointY="6.125" />
+        <EntityTypeShape EntityType="segconrepModel.perfil" Width="1.5" PointX="10.125" PointY="7.25" />
         <AssociationConnector Association="segconrepModel.fk_perfil_integrante" />
         <AssociationConnector Association="segconrepModel.fk_perfilaplicacion_perfil" />
         <AssociationConnector Association="segconrepModel.fk_perfiles" />
         <AssociationConnector Association="segconrepModel.fk_perfilprivilegio_perfilid" />
+        <EntityTypeShape EntityType="segconrepModel.departamento" Width="1.5" PointX="6.875" PointY="25.5" />
+        <EntityTypeShape EntityType="segconrepModel.emisionevento" Width="1.5" PointX="8.9129587285746634" PointY="22.437897066789631" />
+        <EntityTypeShape EntityType="segconrepModel.emisionlimite" Width="1.5" PointX="3.125" PointY="19.75" />
+        <EntityTypeShape EntityType="segconrepModel.emisionproceso" Width="1.5" PointX="11.75" PointY="9.125" />
+        <EntityTypeShape EntityType="segconrepModel.eventoestado" Width="1.5" PointX="11.75" PointY="25.625" />
+        <EntityTypeShape EntityType="segconrepModel.poliza" Width="1.5" PointX="6.5" PointY="3.25" />
+        <EntityTypeShape EntityType="segconrepModel.polizaestado" Width="1.5" PointX="11.098597475839126" PointY="2.2627082179592497" />
+        <EntityTypeShape EntityType="segconrepModel.ramo" Width="1.5" PointX="5" PointY="25.25" />
+        <AssociationConnector Association="segconrepModel.fk_usuario_departamento" />
+        <AssociationConnector Association="segconrepModel.fk_evento_estado" />
+        <AssociationConnector Association="segconrepModel.fk_evento_limite" />
+        <AssociationConnector Association="segconrepModel.fk_evento_poliza" />
+        <AssociationConnector Association="segconrepModel.fk_limite_proceso" />
+        <AssociationConnector Association="segconrepModel.fk_limite_ramo" />
+        <AssociationConnector Association="segconrepModel.fk_poliza_estado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

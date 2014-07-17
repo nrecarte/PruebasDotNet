@@ -35,5 +35,13 @@ namespace SegConRep
         public DbSet<rolperfil> rolperfil { get; set; }
         public DbSet<usuario> usuario { get; set; }
         public DbSet<perfil> perfil { get; set; }
+        public DbSet<departamento> departamento { get; set; }
+        public DbSet<emisionevento> emisionevento { get; set; }
+        public DbSet<emisionlimite> emisionlimite { get; set; }
+        public DbSet<emisionproceso> emisionproceso { get; set; }
+        public DbSet<eventoestado> eventoestado { get; set; }
+        public DbSet<poliza> poliza { get; set; }
+        public DbSet<polizaestado> polizaestado { get; set; }
+        public DbSet<ramo> ramo { get; set; }
     }
 }

@@ -1,0 +1,83 @@
+﻿@model SegConRep.emisionevento
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>emisionevento</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionevento_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionevento_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionevento_fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionevento_fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionevento_numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionevento_numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionevento_usuario_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionevento_usuario_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionevento_fecha_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionevento_fecha_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventoestado.eventoestado_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventoestado.eventoestado_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionlimite.emisionlimite_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionlimite.emisionlimite_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poliza.poliza_numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poliza.poliza_numero)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.emisionevento_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

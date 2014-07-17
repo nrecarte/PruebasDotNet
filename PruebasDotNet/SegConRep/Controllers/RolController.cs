@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using SegConRep;
 using EntityState = System.Data.Entity.EntityState;
 
-namespace Prueba.Controllers
+namespace SegConRep.Controllers
 {
     public class RolController : Controller
     {

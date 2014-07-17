@@ -1,0 +1,110 @@
+﻿@model SegConRep.emisionevento
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>emisionevento</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.emisionevento_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_poliza_numero, "emisionevento_poliza_numero", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emisionevento_poliza_numero", String.Empty)
+                @Html.ValidationMessageFor(model => model.emisionevento_poliza_numero)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_proceso_id, "emisionevento_proceso_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emisionevento_proceso_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.emisionevento_proceso_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_estado_id, "emisionevento_estado_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emisionevento_estado_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.emisionevento_estado_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_producto_1, "emisionevento_producto_1", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emisionevento_producto_1", String.Empty)
+                @Html.ValidationMessageFor(model => model.emisionevento_producto_1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_producto_2, "emisionevento_producto_2", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emisionevento_producto_2", String.Empty)
+                @Html.ValidationMessageFor(model => model.emisionevento_producto_2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_descripcion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emisionevento_descripcion)
+                @Html.ValidationMessageFor(model => model.emisionevento_descripcion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_fecha_inicio, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emisionevento_fecha_inicio)
+                @Html.ValidationMessageFor(model => model.emisionevento_fecha_inicio)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_numero, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emisionevento_numero)
+                @Html.ValidationMessageFor(model => model.emisionevento_numero)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_usuario_id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emisionevento_usuario_id)
+                @Html.ValidationMessageFor(model => model.emisionevento_usuario_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emisionevento_fecha_fin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emisionevento_fecha_fin)
+                @Html.ValidationMessageFor(model => model.emisionevento_fecha_fin)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

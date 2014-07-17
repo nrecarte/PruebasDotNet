@@ -1,0 +1,58 @@
+﻿@model SegConRep.poliza
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>poliza</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.poliza_numero)
+
+        @Html.HiddenFor(model => model.poliza_producto_1)
+
+        @Html.HiddenFor(model => model.poliza_producto_2)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.poliza_zona, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.poliza_zona)
+                @Html.ValidationMessageFor(model => model.poliza_zona)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.poliza_oficina, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.poliza_oficina)
+                @Html.ValidationMessageFor(model => model.poliza_oficina)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.poliza_estado_id, "poliza_estado_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("poliza_estado_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.poliza_estado_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -7,12 +7,20 @@
     <Schema Namespace="segconrepModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="segconrepModelStoreContainer">
           <EntitySet Name="aplicacion" EntityType="segconrepModel.Store.aplicacion" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="departamento" EntityType="segconrepModel.Store.departamento" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="emisionevento" EntityType="segconrepModel.Store.emisionevento" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="emisionlimite" EntityType="segconrepModel.Store.emisionlimite" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="emisionproceso" EntityType="segconrepModel.Store.emisionproceso" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="estadousuario" EntityType="segconrepModel.Store.estadousuario" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="eventoestado" EntityType="segconrepModel.Store.eventoestado" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="grupo" EntityType="segconrepModel.Store.grupo" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="perfil" EntityType="segconrepModel.Store.perfil" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="perfilaplicacion" EntityType="segconrepModel.Store.perfilaplicacion" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="perfilprivilegio" EntityType="segconrepModel.Store.perfilprivilegio" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="poliza" EntityType="segconrepModel.Store.poliza" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="polizaestado" EntityType="segconrepModel.Store.polizaestado" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="privilegio" EntityType="segconrepModel.Store.privilegio" store:Type="Tables" Schema="segconrep" />
+          <EntitySet Name="ramo" EntityType="segconrepModel.Store.ramo" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="rol" EntityType="segconrepModel.Store.rol" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="rolperfil" EntityType="segconrepModel.Store.rolperfil" store:Type="Tables" Schema="segconrep" />
           <EntitySet Name="usuario" EntityType="segconrepModel.Store.usuario" store:Type="Tables" Schema="segconrep" />
@@ -20,9 +28,29 @@
             <End Role="estadousuario" EntitySet="estadousuario" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="fk_evento_estado" Association="segconrepModel.Store.fk_evento_estado">
+            <End Role="eventoestado" EntitySet="eventoestado" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_limite" Association="segconrepModel.Store.fk_evento_limite">
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_poliza" Association="segconrepModel.Store.fk_evento_poliza">
+            <End Role="poliza" EntitySet="poliza" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
           <AssociationSet Name="fk_grupo_integrante" Association="segconrepModel.Store.fk_grupo_integrante">
             <End Role="grupo" EntitySet="grupo" />
             <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_limite_proceso" Association="segconrepModel.Store.fk_limite_proceso">
+            <End Role="emisionproceso" EntitySet="emisionproceso" />
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
+          </AssociationSet>
+          <AssociationSet Name="fk_limite_ramo" Association="segconrepModel.Store.fk_limite_ramo">
+            <End Role="ramo" EntitySet="ramo" />
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
           </AssociationSet>
           <AssociationSet Name="fk_perfil_integrante" Association="segconrepModel.Store.fk_perfil_integrante">
             <End Role="perfil" EntitySet="perfil" />
@@ -48,9 +76,17 @@
             <End Role="privilegio" EntitySet="privilegio" />
             <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
           </AssociationSet>
+          <AssociationSet Name="fk_poliza_estado" Association="segconrepModel.Store.fk_poliza_estado">
+            <End Role="polizaestado" EntitySet="polizaestado" />
+            <End Role="poliza" EntitySet="poliza" />
+          </AssociationSet>
           <AssociationSet Name="fk_roles" Association="segconrepModel.Store.fk_roles">
             <End Role="rol" EntitySet="rol" />
             <End Role="rolperfil" EntitySet="rolperfil" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_departamento" Association="segconrepModel.Store.fk_usuario_departamento">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aplicacion">
@@ -61,6 +97,49 @@
           <Property Name="aplicacion_nombre" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="aplicacion_Descripcion" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="departamento_id" />
+          </Key>
+          <Property Name="departamento_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="departamento_nombre" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="emisionevento">
+          <Key>
+            <PropertyRef Name="emisionevento_id" />
+          </Key>
+          <Property Name="emisionevento_id" Type="int" Nullable="false" />
+          <Property Name="emisionevento_poliza_numero" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="emisionevento_proceso_id" Type="int" Nullable="false" />
+          <Property Name="emisionevento_estado_id" Type="int" Nullable="false" />
+          <Property Name="emisionevento_producto_1" Type="int" Nullable="false" />
+          <Property Name="emisionevento_producto_2" Type="int" Nullable="false" />
+          <Property Name="emisionevento_descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="emisionevento_fecha_inicio" Type="datetime" Nullable="false" />
+          <Property Name="emisionevento_numero" Type="int" Nullable="false" />
+          <Property Name="emisionevento_usuario_id" Type="int" Nullable="false" />
+          <Property Name="emisionevento_fecha_fin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="emisionlimite">
+          <Key>
+            <PropertyRef Name="emisionlimite_producto_1" />
+            <PropertyRef Name="emisionlimite_producto_2" />
+            <PropertyRef Name="emisionlimite_proceso_id" />
+          </Key>
+          <Property Name="emisionlimite_dias" Type="int" />
+          <Property Name="emisionlimite_descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="emisionlimite_producto_1" Type="int" Nullable="false" />
+          <Property Name="emisionlimite_producto_2" Type="int" Nullable="false" />
+          <Property Name="emisionlimite_proceso_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="emisionproceso">
+          <Key>
+            <PropertyRef Name="emisionproceso_id" />
+          </Key>
+          <Property Name="emisionproceso_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="emisionproceso_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="emisionproceso_descripcion" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="estadousuario">
           <Key>
             <PropertyRef Name="estadousuario_id" />
@@ -68,6 +147,14 @@
           <Property Name="estadousuario_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="estadousuario_estado" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="estadousuario_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="eventoestado">
+          <Key>
+            <PropertyRef Name="eventoestado_id" />
+          </Key>
+          <Property Name="eventoestado_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="eventoestado_estado" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="eventoestado_descripcion" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="grupo">
           <Key>
@@ -100,6 +187,27 @@
           <Property Name="perfilprivilegio_perfil_id" Type="int" Nullable="false" />
           <Property Name="perfilprivilegio_privilegio_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="poliza">
+          <Key>
+            <PropertyRef Name="poliza_numero" />
+            <PropertyRef Name="poliza_producto_1" />
+            <PropertyRef Name="poliza_producto_2" />
+          </Key>
+          <Property Name="poliza_numero" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="poliza_producto_1" Type="int" Nullable="false" />
+          <Property Name="poliza_producto_2" Type="int" Nullable="false" />
+          <Property Name="poliza_zona" Type="int" />
+          <Property Name="poliza_oficina" Type="int" />
+          <Property Name="poliza_estado_id" Type="int" />
+        </EntityType>
+        <EntityType Name="polizaestado">
+          <Key>
+            <PropertyRef Name="polizaestado_id" />
+          </Key>
+          <Property Name="polizaestado_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="polizaestado_estado" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="polizaestado_descripcion" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="privilegio">
           <Key>
             <PropertyRef Name="privilegio_id" />
@@ -107,6 +215,15 @@
           <Property Name="privilegio_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="privilegio_nombre" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="privilegio_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ramo">
+          <Key>
+            <PropertyRef Name="ramo_producto_1" />
+            <PropertyRef Name="ramo_producto_2" />
+          </Key>
+          <Property Name="ramo_producto_1" Type="int" Nullable="false" />
+          <Property Name="ramo_producto_2" Type="int" Nullable="false" />
+          <Property Name="ramo_nombre" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -136,6 +253,7 @@
           <Property Name="usuario_estadousuario_id" Type="int" />
           <Property Name="usuario_clave" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="usuario_nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="usuario_departamento_id" Type="int" />
         </EntityType>
         <Association Name="fk_estado_integrante">
           <End Role="estadousuario" Type="segconrepModel.Store.estadousuario" Multiplicity="0..1" />
@@ -149,6 +267,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_evento_estado">
+          <End Role="eventoestado" Type="segconrepModel.Store.eventoestado" Multiplicity="1" />
+          <End Role="emisionevento" Type="segconrepModel.Store.emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventoestado">
+              <PropertyRef Name="eventoestado_id" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_limite">
+          <End Role="emisionlimite" Type="segconrepModel.Store.emisionlimite" Multiplicity="1" />
+          <End Role="emisionevento" Type="segconrepModel.Store.emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_producto_1" />
+              <PropertyRef Name="emisionlimite_producto_2" />
+              <PropertyRef Name="emisionlimite_proceso_id" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_producto_1" />
+              <PropertyRef Name="emisionevento_producto_2" />
+              <PropertyRef Name="emisionevento_proceso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_poliza">
+          <End Role="poliza" Type="segconrepModel.Store.poliza" Multiplicity="1" />
+          <End Role="emisionevento" Type="segconrepModel.Store.emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliza">
+              <PropertyRef Name="poliza_numero" />
+              <PropertyRef Name="poliza_producto_1" />
+              <PropertyRef Name="poliza_producto_2" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_poliza_numero" />
+              <PropertyRef Name="emisionevento_estado_id" />
+              <PropertyRef Name="emisionevento_producto_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_grupo_integrante">
           <End Role="grupo" Type="segconrepModel.Store.grupo" Multiplicity="0..1" />
           <End Role="usuario" Type="segconrepModel.Store.usuario" Multiplicity="*" />
@@ -158,6 +320,32 @@
             </Principal>
             <Dependent Role="usuario">
               <PropertyRef Name="usuario_grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_limite_proceso">
+          <End Role="emisionproceso" Type="segconrepModel.Store.emisionproceso" Multiplicity="1" />
+          <End Role="emisionlimite" Type="segconrepModel.Store.emisionlimite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emisionproceso">
+              <PropertyRef Name="emisionproceso_id" />
+            </Principal>
+            <Dependent Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_proceso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_limite_ramo">
+          <End Role="ramo" Type="segconrepModel.Store.ramo" Multiplicity="1" />
+          <End Role="emisionlimite" Type="segconrepModel.Store.emisionlimite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ramo">
+              <PropertyRef Name="ramo_producto_1" />
+              <PropertyRef Name="ramo_producto_2" />
+            </Principal>
+            <Dependent Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_producto_1" />
+              <PropertyRef Name="emisionlimite_producto_2" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -233,6 +421,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_poliza_estado">
+          <End Role="polizaestado" Type="segconrepModel.Store.polizaestado" Multiplicity="0..1" />
+          <End Role="poliza" Type="segconrepModel.Store.poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="polizaestado">
+              <PropertyRef Name="polizaestado_id" />
+            </Principal>
+            <Dependent Role="poliza">
+              <PropertyRef Name="poliza_estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_roles">
           <End Role="rol" Type="segconrepModel.Store.rol" Multiplicity="0..1" />
           <End Role="rolperfil" Type="segconrepModel.Store.rolperfil" Multiplicity="*" />
@@ -242,6 +442,18 @@
             </Principal>
             <Dependent Role="rolperfil">
               <PropertyRef Name="rolperfil_rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_departamento">
+          <End Role="departamento" Type="segconrepModel.Store.departamento" Multiplicity="0..1" />
+          <End Role="usuario" Type="segconrepModel.Store.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="departamento_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_departamento_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -295,6 +507,42 @@
           <AssociationSet Name="fk_perfilprivilegio_perfilid" Association="segconrepModel.fk_perfilprivilegio_perfilid">
             <End Role="perfil" EntitySet="perfil" />
             <End Role="perfilprivilegio" EntitySet="perfilprivilegio" />
+          </AssociationSet>
+          <EntitySet Name="departamento" EntityType="segconrepModel.departamento" />
+          <EntitySet Name="emisionevento" EntityType="segconrepModel.emisionevento" />
+          <EntitySet Name="emisionlimite" EntityType="segconrepModel.emisionlimite" />
+          <EntitySet Name="emisionproceso" EntityType="segconrepModel.emisionproceso" />
+          <EntitySet Name="eventoestado" EntityType="segconrepModel.eventoestado" />
+          <EntitySet Name="poliza" EntityType="segconrepModel.poliza" />
+          <EntitySet Name="polizaestado" EntityType="segconrepModel.polizaestado" />
+          <EntitySet Name="ramo" EntityType="segconrepModel.ramo" />
+          <AssociationSet Name="fk_usuario_departamento" Association="segconrepModel.fk_usuario_departamento">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_estado" Association="segconrepModel.fk_evento_estado">
+            <End Role="eventoestado" EntitySet="eventoestado" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_limite" Association="segconrepModel.fk_evento_limite">
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_poliza" Association="segconrepModel.fk_evento_poliza">
+            <End Role="poliza" EntitySet="poliza" />
+            <End Role="emisionevento" EntitySet="emisionevento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_limite_proceso" Association="segconrepModel.fk_limite_proceso">
+            <End Role="emisionproceso" EntitySet="emisionproceso" />
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
+          </AssociationSet>
+          <AssociationSet Name="fk_limite_ramo" Association="segconrepModel.fk_limite_ramo">
+            <End Role="ramo" EntitySet="ramo" />
+            <End Role="emisionlimite" EntitySet="emisionlimite" />
+          </AssociationSet>
+          <AssociationSet Name="fk_poliza_estado" Association="segconrepModel.fk_poliza_estado">
+            <End Role="polizaestado" EntitySet="polizaestado" />
+            <End Role="poliza" EntitySet="poliza" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aplicacion">
@@ -422,6 +670,8 @@
           <NavigationProperty Name="estadousuario" Relationship="segconrepModel.fk_estado_integrante" FromRole="usuario" ToRole="estadousuario" />
           <NavigationProperty Name="grupo" Relationship="segconrepModel.fk_grupo_integrante" FromRole="usuario" ToRole="grupo" />
           <NavigationProperty Name="perfil" Relationship="segconrepModel.fk_perfil_integrante" FromRole="usuario" ToRole="perfil" />
+          <Property Type="Int32" Name="usuario_departamento_id" />
+          <NavigationProperty Name="departamento" Relationship="segconrepModel.fk_usuario_departamento" FromRole="usuario" ToRole="departamento" />
         </EntityType>
         <Association Name="fk_estado_integrante">
           <End Type="segconrepModel.estadousuario" Role="estadousuario" Multiplicity="0..1" />
@@ -507,6 +757,194 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="departamento_id" />
+          </Key>
+          <Property Type="Int32" Name="departamento_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="departamento_nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuario" Relationship="segconrepModel.fk_usuario_departamento" FromRole="departamento" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="emisionevento">
+          <Key>
+            <PropertyRef Name="emisionevento_id" />
+          </Key>
+          <Property Type="Int32" Name="emisionevento_id" Nullable="false" />
+          <Property Type="String" Name="emisionevento_poliza_numero" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="emisionevento_proceso_id" Nullable="false" />
+          <Property Type="Int32" Name="emisionevento_estado_id" Nullable="false" />
+          <Property Type="Int32" Name="emisionevento_producto_1" Nullable="false" />
+          <Property Type="Int32" Name="emisionevento_producto_2" Nullable="false" />
+          <Property Type="String" Name="emisionevento_descripcion" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="emisionevento_fecha_inicio" Nullable="false" />
+          <Property Type="Int32" Name="emisionevento_numero" Nullable="false" />
+          <Property Type="Int32" Name="emisionevento_usuario_id" Nullable="false" />
+          <Property Type="DateTime" Name="emisionevento_fecha_fin" />
+          <NavigationProperty Name="eventoestado" Relationship="segconrepModel.fk_evento_estado" FromRole="emisionevento" ToRole="eventoestado" />
+          <NavigationProperty Name="emisionlimite" Relationship="segconrepModel.fk_evento_limite" FromRole="emisionevento" ToRole="emisionlimite" />
+          <NavigationProperty Name="poliza" Relationship="segconrepModel.fk_evento_poliza" FromRole="emisionevento" ToRole="poliza" />
+        </EntityType>
+        <EntityType Name="emisionlimite">
+          <Key>
+            <PropertyRef Name="emisionlimite_producto_1" />
+            <PropertyRef Name="emisionlimite_producto_2" />
+            <PropertyRef Name="emisionlimite_proceso_id" />
+          </Key>
+          <Property Type="Int32" Name="emisionlimite_dias" />
+          <Property Type="String" Name="emisionlimite_descripcion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="emisionlimite_producto_1" Nullable="false" />
+          <Property Type="Int32" Name="emisionlimite_producto_2" Nullable="false" />
+          <Property Type="Int32" Name="emisionlimite_proceso_id" Nullable="false" />
+          <NavigationProperty Name="emisionevento" Relationship="segconrepModel.fk_evento_limite" FromRole="emisionlimite" ToRole="emisionevento" />
+          <NavigationProperty Name="emisionproceso" Relationship="segconrepModel.fk_limite_proceso" FromRole="emisionlimite" ToRole="emisionproceso" />
+          <NavigationProperty Name="ramo" Relationship="segconrepModel.fk_limite_ramo" FromRole="emisionlimite" ToRole="ramo" />
+        </EntityType>
+        <EntityType Name="emisionproceso">
+          <Key>
+            <PropertyRef Name="emisionproceso_id" />
+          </Key>
+          <Property Type="Int32" Name="emisionproceso_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="emisionproceso_nombre" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="emisionproceso_descripcion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="emisionlimite" Relationship="segconrepModel.fk_limite_proceso" FromRole="emisionproceso" ToRole="emisionlimite" />
+        </EntityType>
+        <EntityType Name="eventoestado">
+          <Key>
+            <PropertyRef Name="eventoestado_id" />
+          </Key>
+          <Property Type="Int32" Name="eventoestado_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="eventoestado_estado" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="eventoestado_descripcion" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="emisionevento" Relationship="segconrepModel.fk_evento_estado" FromRole="eventoestado" ToRole="emisionevento" />
+        </EntityType>
+        <EntityType Name="poliza">
+          <Key>
+            <PropertyRef Name="poliza_numero" />
+            <PropertyRef Name="poliza_producto_1" />
+            <PropertyRef Name="poliza_producto_2" />
+          </Key>
+          <Property Type="String" Name="poliza_numero" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="poliza_producto_1" Nullable="false" />
+          <Property Type="Int32" Name="poliza_producto_2" Nullable="false" />
+          <Property Type="Int32" Name="poliza_zona" />
+          <Property Type="Int32" Name="poliza_oficina" />
+          <Property Type="Int32" Name="poliza_estado_id" />
+          <NavigationProperty Name="emisionevento" Relationship="segconrepModel.fk_evento_poliza" FromRole="poliza" ToRole="emisionevento" />
+          <NavigationProperty Name="polizaestado" Relationship="segconrepModel.fk_poliza_estado" FromRole="poliza" ToRole="polizaestado" />
+        </EntityType>
+        <EntityType Name="polizaestado">
+          <Key>
+            <PropertyRef Name="polizaestado_id" />
+          </Key>
+          <Property Type="Int32" Name="polizaestado_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="polizaestado_estado" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="polizaestado_descripcion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="poliza" Relationship="segconrepModel.fk_poliza_estado" FromRole="polizaestado" ToRole="poliza" />
+        </EntityType>
+        <EntityType Name="ramo">
+          <Key>
+            <PropertyRef Name="ramo_producto_1" />
+            <PropertyRef Name="ramo_producto_2" />
+          </Key>
+          <Property Type="Int32" Name="ramo_producto_1" Nullable="false" />
+          <Property Type="Int32" Name="ramo_producto_2" Nullable="false" />
+          <Property Type="String" Name="ramo_nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="emisionlimite" Relationship="segconrepModel.fk_limite_ramo" FromRole="ramo" ToRole="emisionlimite" />
+        </EntityType>
+        <Association Name="fk_usuario_departamento">
+          <End Type="segconrepModel.departamento" Role="departamento" Multiplicity="0..1" />
+          <End Type="segconrepModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="departamento_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_departamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_estado">
+          <End Type="segconrepModel.eventoestado" Role="eventoestado" Multiplicity="1" />
+          <End Type="segconrepModel.emisionevento" Role="emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventoestado">
+              <PropertyRef Name="eventoestado_id" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_limite">
+          <End Type="segconrepModel.emisionlimite" Role="emisionlimite" Multiplicity="1" />
+          <End Type="segconrepModel.emisionevento" Role="emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_producto_1" />
+              <PropertyRef Name="emisionlimite_producto_2" />
+              <PropertyRef Name="emisionlimite_proceso_id" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_producto_1" />
+              <PropertyRef Name="emisionevento_producto_2" />
+              <PropertyRef Name="emisionevento_proceso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_poliza">
+          <End Type="segconrepModel.poliza" Role="poliza" Multiplicity="1" />
+          <End Type="segconrepModel.emisionevento" Role="emisionevento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliza">
+              <PropertyRef Name="poliza_numero" />
+              <PropertyRef Name="poliza_producto_1" />
+              <PropertyRef Name="poliza_producto_2" />
+            </Principal>
+            <Dependent Role="emisionevento">
+              <PropertyRef Name="emisionevento_poliza_numero" />
+              <PropertyRef Name="emisionevento_estado_id" />
+              <PropertyRef Name="emisionevento_producto_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_limite_proceso">
+          <End Type="segconrepModel.emisionproceso" Role="emisionproceso" Multiplicity="1" />
+          <End Type="segconrepModel.emisionlimite" Role="emisionlimite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emisionproceso">
+              <PropertyRef Name="emisionproceso_id" />
+            </Principal>
+            <Dependent Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_proceso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_limite_ramo">
+          <End Type="segconrepModel.ramo" Role="ramo" Multiplicity="1" />
+          <End Type="segconrepModel.emisionlimite" Role="emisionlimite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ramo">
+              <PropertyRef Name="ramo_producto_1" />
+              <PropertyRef Name="ramo_producto_2" />
+            </Principal>
+            <Dependent Role="emisionlimite">
+              <PropertyRef Name="emisionlimite_producto_1" />
+              <PropertyRef Name="emisionlimite_producto_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_poliza_estado">
+          <End Type="segconrepModel.polizaestado" Role="polizaestado" Multiplicity="0..1" />
+          <End Type="segconrepModel.poliza" Role="poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="polizaestado">
+              <PropertyRef Name="polizaestado_id" />
+            </Principal>
+            <Dependent Role="poliza">
+              <PropertyRef Name="poliza_estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -587,6 +1025,7 @@
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="segconrepModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="usuario_departamento_id" ColumnName="usuario_departamento_id" />
                 <ScalarProperty Name="usuario_nombre" ColumnName="usuario_nombre" />
                 <ScalarProperty Name="usuario_clave" ColumnName="usuario_clave" />
                 <ScalarProperty Name="usuario_estadousuario_id" ColumnName="usuario_estadousuario_id" />
@@ -604,6 +1043,90 @@
                 <ScalarProperty Name="perfil_descripcion" ColumnName="perfil_descripcion" />
                 <ScalarProperty Name="perfil_nombre" ColumnName="perfil_nombre" />
                 <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departamento">
+            <EntityTypeMapping TypeName="segconrepModel.departamento">
+              <MappingFragment StoreEntitySet="departamento">
+                <ScalarProperty Name="departamento_nombre" ColumnName="departamento_nombre" />
+                <ScalarProperty Name="departamento_id" ColumnName="departamento_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emisionevento">
+            <EntityTypeMapping TypeName="segconrepModel.emisionevento">
+              <MappingFragment StoreEntitySet="emisionevento">
+                <ScalarProperty Name="emisionevento_fecha_fin" ColumnName="emisionevento_fecha_fin" />
+                <ScalarProperty Name="emisionevento_usuario_id" ColumnName="emisionevento_usuario_id" />
+                <ScalarProperty Name="emisionevento_numero" ColumnName="emisionevento_numero" />
+                <ScalarProperty Name="emisionevento_fecha_inicio" ColumnName="emisionevento_fecha_inicio" />
+                <ScalarProperty Name="emisionevento_descripcion" ColumnName="emisionevento_descripcion" />
+                <ScalarProperty Name="emisionevento_producto_2" ColumnName="emisionevento_producto_2" />
+                <ScalarProperty Name="emisionevento_producto_1" ColumnName="emisionevento_producto_1" />
+                <ScalarProperty Name="emisionevento_estado_id" ColumnName="emisionevento_estado_id" />
+                <ScalarProperty Name="emisionevento_proceso_id" ColumnName="emisionevento_proceso_id" />
+                <ScalarProperty Name="emisionevento_poliza_numero" ColumnName="emisionevento_poliza_numero" />
+                <ScalarProperty Name="emisionevento_id" ColumnName="emisionevento_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emisionlimite">
+            <EntityTypeMapping TypeName="segconrepModel.emisionlimite">
+              <MappingFragment StoreEntitySet="emisionlimite">
+                <ScalarProperty Name="emisionlimite_proceso_id" ColumnName="emisionlimite_proceso_id" />
+                <ScalarProperty Name="emisionlimite_producto_2" ColumnName="emisionlimite_producto_2" />
+                <ScalarProperty Name="emisionlimite_producto_1" ColumnName="emisionlimite_producto_1" />
+                <ScalarProperty Name="emisionlimite_descripcion" ColumnName="emisionlimite_descripcion" />
+                <ScalarProperty Name="emisionlimite_dias" ColumnName="emisionlimite_dias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emisionproceso">
+            <EntityTypeMapping TypeName="segconrepModel.emisionproceso">
+              <MappingFragment StoreEntitySet="emisionproceso">
+                <ScalarProperty Name="emisionproceso_descripcion" ColumnName="emisionproceso_descripcion" />
+                <ScalarProperty Name="emisionproceso_nombre" ColumnName="emisionproceso_nombre" />
+                <ScalarProperty Name="emisionproceso_id" ColumnName="emisionproceso_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventoestado">
+            <EntityTypeMapping TypeName="segconrepModel.eventoestado">
+              <MappingFragment StoreEntitySet="eventoestado">
+                <ScalarProperty Name="eventoestado_descripcion" ColumnName="eventoestado_descripcion" />
+                <ScalarProperty Name="eventoestado_estado" ColumnName="eventoestado_estado" />
+                <ScalarProperty Name="eventoestado_id" ColumnName="eventoestado_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="poliza">
+            <EntityTypeMapping TypeName="segconrepModel.poliza">
+              <MappingFragment StoreEntitySet="poliza">
+                <ScalarProperty Name="poliza_estado_id" ColumnName="poliza_estado_id" />
+                <ScalarProperty Name="poliza_oficina" ColumnName="poliza_oficina" />
+                <ScalarProperty Name="poliza_zona" ColumnName="poliza_zona" />
+                <ScalarProperty Name="poliza_producto_2" ColumnName="poliza_producto_2" />
+                <ScalarProperty Name="poliza_producto_1" ColumnName="poliza_producto_1" />
+                <ScalarProperty Name="poliza_numero" ColumnName="poliza_numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="polizaestado">
+            <EntityTypeMapping TypeName="segconrepModel.polizaestado">
+              <MappingFragment StoreEntitySet="polizaestado">
+                <ScalarProperty Name="polizaestado_descripcion" ColumnName="polizaestado_descripcion" />
+                <ScalarProperty Name="polizaestado_estado" ColumnName="polizaestado_estado" />
+                <ScalarProperty Name="polizaestado_id" ColumnName="polizaestado_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ramo">
+            <EntityTypeMapping TypeName="segconrepModel.ramo">
+              <MappingFragment StoreEntitySet="ramo">
+                <ScalarProperty Name="ramo_nombre" ColumnName="ramo_nombre" />
+                <ScalarProperty Name="ramo_producto_2" ColumnName="ramo_producto_2" />
+                <ScalarProperty Name="ramo_producto_1" ColumnName="ramo_producto_1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

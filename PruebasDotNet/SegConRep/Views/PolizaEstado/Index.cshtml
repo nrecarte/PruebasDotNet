@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SegConRep.polizaestado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.polizaestado_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.polizaestado_descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.polizaestado_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.polizaestado_descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.polizaestado_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.polizaestado_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.polizaestado_id })
+        </td>
+    </tr>
+}
+
+</table>

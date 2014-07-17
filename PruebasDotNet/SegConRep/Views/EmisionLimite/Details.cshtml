@@ -1,0 +1,51 @@
+﻿@model SegConRep.emisionlimite
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>emisionlimite</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionlimite_dias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionlimite_dias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionlimite_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionlimite_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emisionproceso.emisionproceso_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emisionproceso.emisionproceso_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ramo.ramo_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ramo.ramo_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
